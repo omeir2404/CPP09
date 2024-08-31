@@ -102,8 +102,8 @@ std::vector<int> PmergeMe::mergeInsertSort(const std::vector<int> &sequence)
 // Helper function to merge two sorted lists
 std::list<int> merge(const std::list<int>& left, const std::list<int>& right) {
     std::list<int> result;
-    auto itLeft = left.begin();
-    auto itRight = right.begin();
+    std::list<int>::const_iterator itLeft = left.begin();
+    std::list<int>::const_iterator itRight = right.begin();
 
     while (itLeft != left.end() && itRight != right.end()) {
         if (*itLeft <= *itRight) {
@@ -129,7 +129,7 @@ std::list<int> PmergeMe::mergeInsertSort(const std::list<int> &sequence) {
 
     // Step 1: Divide the list into pairs
     std::list<std::list<int>> pairs;
-    auto it = sequence.begin();
+    std::list<int>::const_iterator it = sequence.begin();
     while (it != sequence.end()) {
         std::list<int> pair;
         pair.push_back(*it);
@@ -142,19 +142,19 @@ std::list<int> PmergeMe::mergeInsertSort(const std::list<int> &sequence) {
     }
 
     // Step 2: Sort each pair
-    for (auto& pair : pairs) {
-        pair.sort();
+    for (std::list<std::list<int>>::iterator it = pairs.begin(); it != pairs.end(); ++it) {
+        (*it).sort();
     }
 
     // Step 3: Merge pairs into a single sorted list
     while (pairs.size() > 1) {
         std::list<std::list<int>> newPairs;
-        auto it = pairs.begin();
+        std::list<std::list<int>>::iterator it = pairs.begin();
         while (it != pairs.end()) {
-            auto left = *it;
+            std::list<int> left = *it;
             ++it;
             if (it != pairs.end()) {
-                auto right = *it;
+                std::list<int> right = *it;
                 ++it;
                 newPairs.push_back(merge(left, right));
             } else {
