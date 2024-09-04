@@ -53,7 +53,7 @@ $(NAME): $(OBJS)
 
 clean:
 	@echo "$(Red)Cleaning $(NAME_COLOR) $(NAME) $(Cyan) objects$(Reset)"
-	@rm -f $(OBJS)
+	@rm -f $(OBJS) val.log
 
 fclean: clean
 	@echo "$(RULE_COLOR)Cleaning $(NAME) executable$(Reset)"

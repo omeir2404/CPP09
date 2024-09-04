@@ -70,8 +70,8 @@ int RPN::createInputStack(char *input[], int argc)
             delete[] splitResult;
     }
 
-    std::cout << "Input Stack on creation: ";
-    printStack(InputStack);
+    // std::cout << "Input Stack on creation: ";
+    // printStack(InputStack);
     return 0;
 }
 

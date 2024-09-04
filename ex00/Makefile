@@ -57,7 +57,7 @@ clean:
 
 fclean: clean
 	@echo "$(RULE_COLOR)Cleaning $(NAME) executable$(Reset)"
-	@rm -f $(NAME)
+	@rm -f $(NAME) val.log
 
 re: fclean all
 	@echo "$(RULE_COLOR)Rebuilding $(NAME)$(Reset)"
@@ -68,6 +68,6 @@ run:
 
 mem: re
 	@echo "$(RULE_COLOR)Running $(NAME) with memory check$(Reset)"
-	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="val.log" ./$(NAME)
+	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="val.log" ./$(NAME) input.txt
 
 .PHONY: all clean fclean re
