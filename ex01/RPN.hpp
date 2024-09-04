@@ -4,10 +4,10 @@
 #include <iostream>
 #include <string>
 #include <stack>
-#include <vector>
 #include <sstream>
 #include <cmath>
 #include <cctype>
+#include <cstring> // For strtok
 
 class RPN {
 
@@ -20,10 +20,13 @@ public:
     RPN(const RPN &rpn);
     RPN &operator=(const RPN &rpn);
 
-    int createInputStack(std::string input);
+    int createInputStack(char *input[], int argc);
     void run();
+    double handleOps(char token, double value1, double value2);
+    void splitString(const std::string& str, char*** result, int* count, char delimiter = ' ') ;
+    int checkValidInput(char *input[], int argc);
 
-
+void printStack(std::stack<std::string> s);
 };
 
 #endif

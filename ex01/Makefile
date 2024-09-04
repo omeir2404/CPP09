@@ -1,5 +1,5 @@
 NAME = RPN
-SRCS = main.cpp BitcoinExchange.cpp
+SRCS = main.cpp RPN.cpp
 OBJS = $(SRCS:.cpp=.o)
 COMPILER = c++
 FLAGS = -Wall -Wextra -Werror -g -std=c++98
@@ -64,10 +64,10 @@ re: fclean all
 
 run: 
 	@echo "$(RULE_COLOR)Running $(NAME)$(Reset)"
-	@ ./$(NAME) input.txt
+	@ ./$(NAME)  "8 9 * 9 - 9 - 9 - 4 - 1 +"
 
 mem: re
 	@echo "$(RULE_COLOR)Running $(NAME) with memory check$(Reset)"
-	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="val.log" ./$(NAME)
+	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="val.log" ./$(NAME) "1 2 * 2 / 2 * 2 4 - +"
 
 .PHONY: all clean fclean re
